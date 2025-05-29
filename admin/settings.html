@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Настройки - Колбико</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-danger" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Admin Navigation Start -->
+    <div class="admin-nav">
+        <div class="admin-nav-header">
+            <h1 class="text-danger mb-0">Колбико</h1>
+            <p class="text-secondary mb-0">Админ-панель</p>
+        </div>
+        <nav class="admin-nav-menu">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i>Обзор
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">
+                        <i class="fas fa-box me-2"></i>Товары
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="orders.html">
+                        <i class="fas fa-shopping-cart me-2"></i>Заказы
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="users.html">
+                        <i class="fas fa-users me-2"></i>Пользователи
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="content.html">
+                        <i class="fas fa-file-alt me-2"></i>Контент
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="settings.html">
+                        <i class="fas fa-cog me-2"></i>Настройки
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="admin-nav-footer">
+            <a href="login.html" class="btn btn-danger w-100">
+                <i class="fas fa-sign-out-alt me-2"></i>Выйти
+            </a>
+        </div>
+    </div>
+    <!-- Admin Navigation End -->
+
+    <!-- Admin Content Start -->
+    <div class="admin-content">
+        <div class="admin-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Настройки</h2>
+                <div class="admin-user">
+                    <span class="me-2">Администратор</span>
+                    <img src="../img/admin-avatar.jpg" alt="Admin" class="rounded-circle" width="40" height="40">
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tabs -->
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#general">
+                            <i class="fas fa-cog me-2"></i>Общие настройки
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#contact">
+                            <i class="fas fa-address-book me-2"></i>Контактная информация
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#social">
+                            <i class="fas fa-share-alt me-2"></i>Социальные сети
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#payment">
+                            <i class="fas fa-credit-card me-2"></i>Платежные системы
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content">
+                    <!-- General Settings Tab -->
+                    <div class="tab-pane fade show active" id="general">
+                        <form id="generalSettingsForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Название сайта</label>
+                                        <input type="text" class="form-control" value="Колбико" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Логотип</label>
+                                        <input type="file" class="form-control" accept="image/*">
+                                        <small class="text-muted">Рекомендуемый размер: 200x50px</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Favicon</label>
+                                        <input type="file" class="form-control" accept="image/*">
+                                        <small class="text-muted">Рекомендуемый размер: 32x32px</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Email администратора</label>
+                                        <input type="email" class="form-control" value="admin@colbiko.ru" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Язык по умолчанию</label>
+                                        <select class="form-select" required>
+                                            <option value="ru">Русский</option>
+                                            <option value="en">English</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Валюта</label>
+                                        <select class="form-select" required>
+                                            <option value="RUB">Рубль (₽)</option>
+                                            <option value="USD">Доллар ($)</option>
+                                            <option value="EUR">Евро (€)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>Сохранить изменения
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Contact Information Tab -->
+                    <div class="tab-pane fade" id="contact">
+                        <form id="contactSettingsForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Адрес</label>
+                                        <input type="text" class="form-control" value="г. Москва, ул. Примерная, д. 1" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Телефон</label>
+                                        <input type="tel" class="form-control" value="+7 (999) 123-45-67" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" value="info@colbiko.ru" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Время работы</label>
+                                        <input type="text" class="form-control" value="Пн-Пт: 9:00 - 18:00" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Координаты для карты</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Широта" value="55.7558">
+                                            <input type="text" class="form-control" placeholder="Долгота" value="37.6173">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>Сохранить изменения
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Social Media Tab -->
+                    <div class="tab-pane fade" id="social">
+                        <form id="socialSettingsForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">VK</label>
+                                        <input type="url" class="form-control" value="https://vk.com/colbiko">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Telegram</label>
+                                        <input type="url" class="form-control" value="https://t.me/colbiko">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">WhatsApp</label>
+                                        <input type="tel" class="form-control" value="+79991234567">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Instagram</label>
+                                        <input type="url" class="form-control" value="https://instagram.com/colbiko">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>Сохранить изменения
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Payment Systems Tab -->
+                    <div class="tab-pane fade" id="payment">
+                        <form id="paymentSettingsForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Сбербанк</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Номер карты" value="4276 1600 1234 5678">
+                                            <input type="text" class="form-control" placeholder="Получатель" value="ИП Иванов И.И.">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Тинькофф</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Номер карты" value="5213 2434 5678 9012">
+                                            <input type="text" class="form-control" placeholder="Получатель" value="ИП Иванов И.И.">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">ЮMoney</label>
+                                        <input type="text" class="form-control" value="4100112345678901">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">QIWI</label>
+                                        <input type="text" class="form-control" value="+79991234567">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>Сохранить изменения
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html> 

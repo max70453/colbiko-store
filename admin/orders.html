@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Управление заказами - Колбико</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-danger" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Admin Navigation Start -->
+    <div class="admin-nav">
+        <div class="admin-nav-header">
+            <h1 class="text-danger mb-0">Колбико</h1>
+            <p class="text-secondary mb-0">Админ-панель</p>
+        </div>
+        <nav class="admin-nav-menu">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i>Обзор
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">
+                        <i class="fas fa-box me-2"></i>Товары
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="orders.html">
+                        <i class="fas fa-shopping-cart me-2"></i>Заказы
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="users.html">
+                        <i class="fas fa-users me-2"></i>Пользователи
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="content.html">
+                        <i class="fas fa-file-alt me-2"></i>Контент
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings.html">
+                        <i class="fas fa-cog me-2"></i>Настройки
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="admin-nav-footer">
+            <a href="login.html" class="btn btn-danger w-100">
+                <i class="fas fa-sign-out-alt me-2"></i>Выйти
+            </a>
+        </div>
+    </div>
+    <!-- Admin Navigation End -->
+
+    <!-- Admin Content Start -->
+    <div class="admin-content">
+        <div class="admin-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Управление заказами</h2>
+                <div class="admin-user">
+                    <span class="me-2">Администратор</span>
+                    <img src="../img/admin-avatar.jpg" alt="Admin" class="rounded-circle" width="40" height="40">
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Management Section -->
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Список заказов</h5>
+                <div class="d-flex gap-2">
+                    <select class="form-select" id="statusFilter">
+                        <option value="">Все статусы</option>
+                        <option value="new">Новый</option>
+                        <option value="processing">В обработке</option>
+                        <option value="shipped">Отправлен</option>
+                        <option value="delivered">Доставлен</option>
+                        <option value="cancelled">Отменен</option>
+                    </select>
+                    <button class="btn btn-outline-primary" onclick="exportData('excel')">
+                        <i class="fas fa-file-excel me-2"></i>Экспорт
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="searchOrder" placeholder="Поиск заказов..." onkeyup="searchTable('searchOrder', 'ordersTable')">
+                </div>
+                <div class="table-responsive">
+                    <table class="table" id="ordersTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Дата</th>
+                                <th>Клиент</th>
+                                <th>Товары</th>
+                                <th>Сумма</th>
+                                <th>Статус</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1234</td>
+                                <td>01.03.2024</td>
+                                <td>
+                                    <div>Иван Петров</div>
+                                    <small class="text-muted">ivan@example.com</small>
+                                </td>
+                                <td>
+                                    <div>Колбаса Докторская (2 кг)</div>
+                                    <div>Колбаса Сервелат (1 кг)</div>
+                                </td>
+                                <td>₽2,500</td>
+                                <td>
+                                    <select class="form-select form-select-sm" onchange="updateOrderStatus(this, 1234)">
+                                        <option value="new">Новый</option>
+                                        <option value="processing" selected>В обработке</option>
+                                        <option value="shipped">Отправлен</option>
+                                        <option value="delivered">Доставлен</option>
+                                        <option value="cancelled">Отменен</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1" onclick="viewOrder(1234)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteOrder(1234)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#1233</td>
+                                <td>28.02.2024</td>
+                                <td>
+                                    <div>Мария Иванова</div>
+                                    <small class="text-muted">maria@example.com</small>
+                                </td>
+                                <td>
+                                    <div>Колбаса Докторская (1 кг)</div>
+                                    <div>Мясные полуфабрикаты (3 кг)</div>
+                                </td>
+                                <td>₽1,800</td>
+                                <td>
+                                    <select class="form-select form-select-sm" onchange="updateOrderStatus(this, 1233)">
+                                        <option value="new">Новый</option>
+                                        <option value="processing">В обработке</option>
+                                        <option value="shipped" selected>Отправлен</option>
+                                        <option value="delivered">Доставлен</option>
+                                        <option value="cancelled">Отменен</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1" onclick="viewOrder(1233)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteOrder(1233)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+
+    <!-- View Order Modal -->
+    <div class="modal fade" id="viewOrderModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Детали заказа #<span id="orderId"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Информация о клиенте</h6>
+                            <div id="customerInfo"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Информация о доставке</h6>
+                            <div id="shippingInfo"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h6>Товары в заказе</h6>
+                    <div class="table-responsive">
+                        <table class="table" id="orderItemsTable">
+                            <thead>
+                                <tr>
+                                    <th>Товар</th>
+                                    <th>Количество</th>
+                                    <th>Цена</th>
+                                    <th>Сумма</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orderItems">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-end">
+                        <h5>Итого: <span id="orderTotal"></span></h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" onclick="printOrder()">
+                        <i class="fas fa-print me-2"></i>Печать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html> 

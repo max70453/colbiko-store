@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Управление пользователями - Колбико</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-danger" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Admin Navigation Start -->
+    <div class="admin-nav">
+        <div class="admin-nav-header">
+            <h1 class="text-danger mb-0">Колбико</h1>
+            <p class="text-secondary mb-0">Админ-панель</p>
+        </div>
+        <nav class="admin-nav-menu">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i>Обзор
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">
+                        <i class="fas fa-box me-2"></i>Товары
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="orders.html">
+                        <i class="fas fa-shopping-cart me-2"></i>Заказы
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="users.html">
+                        <i class="fas fa-users me-2"></i>Пользователи
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="content.html">
+                        <i class="fas fa-file-alt me-2"></i>Контент
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings.html">
+                        <i class="fas fa-cog me-2"></i>Настройки
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="admin-nav-footer">
+            <a href="login.html" class="btn btn-danger w-100">
+                <i class="fas fa-sign-out-alt me-2"></i>Выйти
+            </a>
+        </div>
+    </div>
+    <!-- Admin Navigation End -->
+
+    <!-- Admin Content Start -->
+    <div class="admin-content">
+        <div class="admin-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Управление пользователями</h2>
+                <div class="admin-user">
+                    <span class="me-2">Администратор</span>
+                    <img src="../img/admin-avatar.jpg" alt="Admin" class="rounded-circle" width="40" height="40">
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Management Section -->
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Список пользователей</h5>
+                <div class="d-flex gap-2">
+                    <select class="form-select" id="roleFilter">
+                        <option value="">Все роли</option>
+                        <option value="admin">Администратор</option>
+                        <option value="user">Пользователь</option>
+                    </select>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                        <i class="fas fa-user-plus me-2"></i>Добавить пользователя
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="searchUser" placeholder="Поиск пользователей..." onkeyup="searchTable('searchUser', 'usersTable')">
+                </div>
+                <div class="table-responsive">
+                    <table class="table" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Имя</th>
+                                <th>Email</th>
+                                <th>Телефон</th>
+                                <th>Роль</th>
+                                <th>Статус</th>
+                                <th>Дата регистрации</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../img/user-1.jpg" alt="User" class="rounded-circle me-2" width="32" height="32">
+                                        <div>Иван Петров</div>
+                                    </div>
+                                </td>
+                                <td>ivan@example.com</td>
+                                <td>+7 (999) 123-45-67</td>
+                                <td><span class="badge bg-primary">Администратор</span></td>
+                                <td><span class="badge bg-success">Активен</span></td>
+                                <td>01.01.2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1" onclick="editUser(1)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-warning me-1" onclick="resetPassword(1)">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteUser(1)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#2</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="../img/user-2.jpg" alt="User" class="rounded-circle me-2" width="32" height="32">
+                                        <div>Мария Иванова</div>
+                                    </div>
+                                </td>
+                                <td>maria@example.com</td>
+                                <td>+7 (999) 765-43-21</td>
+                                <td><span class="badge bg-secondary">Пользователь</span></td>
+                                <td><span class="badge bg-success">Активен</span></td>
+                                <td>15.02.2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1" onclick="editUser(2)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-warning me-1" onclick="resetPassword(2)">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteUser(2)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+
+    <!-- Add User Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавить пользователя</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addUserForm">
+                        <div class="mb-3">
+                            <label class="form-label">Имя</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Телефон</label>
+                            <input type="tel" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Пароль</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Роль</label>
+                            <select class="form-select" required>
+                                <option value="">Выберите роль</option>
+                                <option value="admin">Администратор</option>
+                                <option value="user">Пользователь</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="submit" form="addUserForm" class="btn btn-primary">Добавить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Password Modal -->
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Сброс пароля</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="resetPasswordForm">
+                        <div class="mb-3">
+                            <label class="form-label">Новый пароль</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Подтверждение пароля</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="submit" form="resetPasswordForm" class="btn btn-primary">Сбросить пароль</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html> 

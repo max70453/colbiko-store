@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Admin Dashboard - Колбико</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-danger" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Admin Navigation Start -->
+    <div class="admin-nav">
+        <div class="admin-nav-header">
+            <h1 class="text-danger mb-0">Колбико</h1>
+            <p class="text-secondary mb-0">Админ-панель</p>
+        </div>
+        <nav class="admin-nav-menu">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i>Обзор
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">
+                        <i class="fas fa-box me-2"></i>Товары
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="orders.html">
+                        <i class="fas fa-shopping-cart me-2"></i>Заказы
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="users.html">
+                        <i class="fas fa-users me-2"></i>Пользователи
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="content.html">
+                        <i class="fas fa-file-alt me-2"></i>Контент
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings.html">
+                        <i class="fas fa-cog me-2"></i>Настройки
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="admin-nav-footer">
+            <a href="login.html" class="btn btn-danger w-100">
+                <i class="fas fa-sign-out-alt me-2"></i>Выйти
+            </a>
+        </div>
+    </div>
+    <!-- Admin Navigation End -->
+
+    <!-- Admin Content Start -->
+    <div class="admin-content">
+        <div class="admin-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Обзор</h2>
+                <div class="admin-user">
+                    <span class="me-2">Администратор</span>
+                    <img src="../img/admin-avatar.jpg" alt="Admin" class="rounded-circle" width="40" height="40">
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-stats">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-card bg-primary text-white rounded p-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0">Всего заказов</h6>
+                                <h2 class="mb-0">150</h2>
+                            </div>
+                            <i class="fas fa-shopping-cart fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-card bg-success text-white rounded p-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0">Пользователей</h6>
+                                <h2 class="mb-0">1,250</h2>
+                            </div>
+                            <i class="fas fa-users fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-card bg-warning text-white rounded p-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0">Товаров</h6>
+                                <h2 class="mb-0">45</h2>
+                            </div>
+                            <i class="fas fa-box fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-card bg-danger text-white rounded p-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0">Доход</h6>
+                                <h2 class="mb-0">₽125,000</h2>
+                            </div>
+                            <i class="fas fa-ruble-sign fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-recent-orders mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Последние заказы</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Клиент</th>
+                                    <th>Товары</th>
+                                    <th>Сумма</th>
+                                    <th>Статус</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#1234</td>
+                                    <td>Иван Петров</td>
+                                    <td>3 товара</td>
+                                    <td>₽2,500</td>
+                                    <td><span class="badge bg-success">Выполнен</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Просмотр</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#1233</td>
+                                    <td>Мария Иванова</td>
+                                    <td>2 товара</td>
+                                    <td>₽1,800</td>
+                                    <td><span class="badge bg-warning">В обработке</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Просмотр</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html> 
