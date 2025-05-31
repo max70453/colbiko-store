@@ -266,3 +266,61 @@
         
 })(jQuery);
 
+// Account Dashboard Navigation
+$(document).ready(function() {
+    // Function to show section
+    function showSection(sectionId) {
+        // Hide all sections
+        $('.dashboard-section').removeClass('active');
+        // Show selected section
+        $('#' + sectionId).addClass('active');
+        
+        // Update navigation
+        $('.dashboard-nav li').removeClass('active');
+        $('.dashboard-nav a[href="#' + sectionId + '"]').parent().addClass('active');
+    }
+
+    // Handle navigation clicks
+    $('.dashboard-nav a').click(function(e) {
+        e.preventDefault();
+        const targetId = $(this).attr('href').substring(1);
+        showSection(targetId);
+    });
+
+    // Show initial section (profile)
+    showSection('profile');
+
+    // Handle form submissions
+    $('#profile form').submit(function(e) {
+        e.preventDefault();
+        alert('Профиль успешно обновлен');
+    });
+
+    $('#settings form').submit(function(e) {
+        e.preventDefault();
+        alert('Настройки успешно сохранены');
+    });
+
+    // Handle address actions
+    $('#addresses .btn-primary').click(function() {
+        alert('Функция добавления адреса будет доступна в ближайшее время');
+    });
+
+    $('.btn-edit').click(function() {
+        alert('Функция редактирования адреса будет доступна в ближайшее время');
+    });
+
+    $('.btn-delete').click(function() {
+        if (confirm('Вы уверены, что хотите удалить этот адрес?')) {
+            $(this).closest('.address-card').remove();
+        }
+    });
+
+    // Handle wishlist actions
+    $('.btn-remove').click(function() {
+        if (confirm('Вы уверены, что хотите удалить этот товар из избранного?')) {
+            $(this).closest('.product-card').remove();
+        }
+    });
+});
+
